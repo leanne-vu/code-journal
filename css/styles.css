@@ -1,7 +1,6 @@
 /* css responsive layout */
 header {
   background-color: #562b81;
-  margin: 0 auto;
   color: white;
 }
 
@@ -26,15 +25,13 @@ img {
 
 label {
   display: block;
-  font-weight: bolder;
+  font-weight: bold;
   margin-bottom: 0.5em;
 }
 
 textarea,
 input {
-  display: block;
   width: 100%;
-  margin-top: 0.5em;
   margin-bottom: 2em;
   border: solid 1px #b6b6b6;
   border-radius: 4px;
@@ -42,6 +39,11 @@ input {
 
 input {
   height: 40px;
+  font-family: "Open Sans", sans-serif;
+}
+
+textarea {
+  font-family: "Open Sans", sans-serif;
 }
 
 button {
