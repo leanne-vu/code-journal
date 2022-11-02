@@ -1,6 +1,7 @@
 header {
   background-color: #562b81;
   color: white;
+  font-family: "Proza Libre", sans-serif;
 }
 
 main {
@@ -112,3 +113,15 @@ ul {
 p {
   margin-top: 30px;
 }
+
+.header {
+  display: inline-block;
+}
+
+.entries-button {
+  color: white;
+  margin-left: 30px;
+  text-decoration: none;
+}
+
+/* take out??? */
