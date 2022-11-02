@@ -51,8 +51,14 @@ function renderEntries(entry) {
 }
 
 var $ul = document.querySelector('ul');
+function entryLoop(data) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var all = renderEntries(data.entries[i]);
+    $ul.appendChild(all);
+  }
+}
+document.addEventListener('DOMContentLoaded', entryLoop(data));
 
-console.log($ul);
 /* <li>
   <div class="entry-row row">
     <div class="column-half">
