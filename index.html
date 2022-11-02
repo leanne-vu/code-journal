@@ -28,7 +28,7 @@
   </header>
   <main>
     <div class="container">
-      <div data-view="entry-form">
+      <div class="hidden" data-view="entry-form">
         <form>
           <div class="row">
             <div class="column-full">
@@ -54,12 +54,20 @@
           </div>
           <div class="row">
             <div class="column-full">
-              <button type="submit">SAVE</button>
+              <button class="save" type="submit">SAVE</button>
             </div>
           </div>
         </form>
       </div>
-    </div>
+      <div data-view="entries">
+        <div class="row">
+          <div class="column-full">
+            <h1>Entries</h1>
+            <button class="new" type="button">NEW</button>
+          </div>
+        </div>
+      </div>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

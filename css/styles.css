@@ -45,20 +45,34 @@ textarea {
   font-family: "Open Sans", sans-serif;
 }
 
+.new {
+  float: right;
+  margin-top: 25px;
+  width: 60px;
+  height: 30px;
+}
+
 button {
-  display: block;
-  margin-left: auto;
-  margin-right: 0;
-  margin-bottom: 50px;
-  background-color: #562b81;
-  width: 75px;
-  height: 35px;
-  color: white;
   border-radius: 4px;
+  color: white;
+  background-color: #562b81;
   border: none;
   font-family: "Open Sans", sans-serif;
   font-weight: bolder;
   font-size: medium;
+}
+
+h1 {
+  display: inline-block;
+}
+
+.save {
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 50px;
+  width: 75px;
+  height: 35px;
 }
 
 textarea:focus {
