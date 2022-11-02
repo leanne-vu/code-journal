@@ -7,7 +7,6 @@ var data = {
   nextEntryId: 1
 };
 
-// local storage exercise
 var previousDataJSON = localStorage.getItem('entry-storage');
 if (previousDataJSON !== null) {
   data = JSON.parse(previousDataJSON);
