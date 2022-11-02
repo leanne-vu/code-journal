@@ -9,7 +9,8 @@ main {
 }
 
 h2,
-h1 {
+h1,
+h3 {
   margin: 0 auto;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -45,13 +46,6 @@ textarea {
   font-family: "Open Sans", sans-serif;
 }
 
-.new {
-  float: right;
-  margin-top: 25px;
-  width: 60px;
-  height: 30px;
-}
-
 button {
   border-radius: 4px;
   color: white;
@@ -85,4 +79,34 @@ input:focus {
 
 button:hover {
   cursor: pointer;
+}
+
+/* second page */
+.new {
+  float: right;
+  margin-top: 25px;
+  width: 60px;
+  height: 30px;
+}
+
+.no-entries {
+  margin-top: 30px;
+  text-align: center;
+}
+
+h3 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.no-entries-column {
+  height: 700px;
+}
+
+.entry-row {
+  margin-block-end: 20px;
+}
+
+ul {
+  list-style-type: none;
 }
