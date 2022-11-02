@@ -19,6 +19,8 @@ $form.addEventListener('submit', function () {
   data.entries.unshift(entry);
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
+  $noEntries.className = ' hidden no-entries-column column-full';
+
 }
 );
 
@@ -61,21 +63,8 @@ document.addEventListener('DOMContentLoaded', entryLoop(data));
 
 var $buttons = document.querySelectorAll('button');
 var $views = document.querySelectorAll('.view');
-document.addEventListener('click', function () {
-  if (event.target.matches('button')) {
-    for (var i = 0; i < $buttons.length; i++) {
-      if ($buttons[i] === event.target) {
-        var screens = event.target.getAttribute('data-view');
-        for (var z = 0; z < $views.length; z++) {
-          if ($views[z].getAttribute('data-view') === screens) {
-            $views[z].className = 'view';
-          } else $views[z].className = 'view hidden';
-        }
-      }
-    }
-  }
-});
 
+var $noEntries = document.querySelector('.no-entries-column');
 /* <li>
   <div class="entry-row row">
     <div class="column-half">
