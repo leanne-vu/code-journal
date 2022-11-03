@@ -92,3 +92,8 @@ function hasEntries() {
     $noEntries.className = 'hidden';
   }
 }
+$ul.addEventListener('click', entriesListClicked);
+function entriesListClicked() {
+  console.log(event.target);
+  console.log(event.target.tagName);
+}
