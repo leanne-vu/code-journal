@@ -73,7 +73,10 @@ var $entries = document.querySelector('.entries-anchor');
 var $dataviews = document.querySelectorAll('.view');
 var $newEntries = document.querySelector('.new-anchor');
 $entries.addEventListener('click', function () { swapViews($entries.getAttribute('data-view')); });
-$newEntries.addEventListener('click', function () { swapViews($newEntries.getAttribute('data-view')); });
+$newEntries.addEventListener('click', function () {
+  $h1text.textContent = 'New Entry';
+  swapViews($newEntries.getAttribute('data-view'));
+});
 function swapViews(dataview) {
   data.view = dataview;
   for (var i = 0; i < $dataviews.length; i++) {
@@ -93,7 +96,12 @@ function hasEntries() {
   }
 }
 $ul.addEventListener('click', entriesListClicked);
+var $h1text = document.querySelector('.h1');
 function entriesListClicked() {
-  console.log(event.target);
-  console.log(event.target.tagName);
+  if (event.target.className === 'fa-solid fa-pencil') {
+    swapViews('entry-form');
+  }
+  if ($h1text.textContent === 'New Entry') {
+    $h1text.textContent = 'Edit Entry';
+  }
 }
