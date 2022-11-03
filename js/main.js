@@ -1,6 +1,7 @@
 /* global data */
 var $photoUrlInput = document.querySelector('#photo-url');
 var $image = document.querySelector('img');
+var $save = document.querySelector('.save');
 var $form = document.querySelector('form');
 $photoUrlInput.addEventListener('input', function () {
   $image.setAttribute('src', event.target.value);
@@ -19,8 +20,9 @@ $form.addEventListener('submit', function () {
   data.entries.unshift(entry);
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-  $noEntries.className = ' hidden no-entries-column column-full';
-
+  $noEntries.className = 'hidden no-entries-column column-full';
+  $ul.prepend(renderEntries(entry));
+  $save.addEventListener('submit', swapViews);
 }
 );
 
@@ -57,23 +59,26 @@ function entryLoop(data) {
   for (var i = 0; i < data.entries.length; i++) {
     var all = renderEntries(data.entries[i]);
     $ul.appendChild(all);
+
   }
 }
 document.addEventListener('DOMContentLoaded', entryLoop(data));
-
-var $buttons = document.querySelectorAll('button');
-var $views = document.querySelectorAll('.view');
-
 var $noEntries = document.querySelector('.no-entries-column');
-/* <li>
-  <div class="entry-row row">
-    <div class="column-half">
-      <img src="images/placeholder-image-square.jpg">
-    </div>
-    <div class="column-half">
-      <h3>Ada LoveLace</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae quod consequuntur tenetur totam repudiandae modi ad vel omnis eos laboriosam enim delectus quas magnam vitae nam est velit, ducimus doloremque!</p>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae enim blanditiis voluptate, iusto pariatur distinctio est fuga quod ullam ad quidem! Assumenda ut minus facilis maxime itaque magni in ipsa.</p>
-    </div>
-  </div>
-</li> */
+
+var $entries = document.querySelector('.entries-anchor');
+var $dataviews = document.querySelectorAll('.view');
+var $newEntries = document.querySelector('.new-anchor');
+$entries.addEventListener('click', function () { swapViews($entries.getAttribute('data-view')); });
+$newEntries.addEventListener('click', function () { swapViews($newEntries.getAttribute('data-view')); });
+function swapViews(dataview) {
+  data.view = dataview;
+  for (var i = 0; i < $dataviews.length; i++) {
+    if ($dataviews[i].getAttribute('data-view') === dataview) {
+      $dataviews[i].className = 'view';
+    } else $dataviews[i].className = 'view hidden';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  swapViews(data.view);
+});
