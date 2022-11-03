@@ -19,9 +19,9 @@ $form.addEventListener('submit', function () {
   data.entries.unshift(entry);
   $image.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-  $noEntries.className = 'hidden no-entries-column column-full';
   $ul.prepend(renderEntries(entry));
   swapViews('entries');
+  hasEntries();
 }
 );
 
@@ -80,4 +80,10 @@ function swapViews(dataview) {
 
 document.addEventListener('DOMContentLoaded', function () {
   swapViews(data.view);
+  hasEntries();
 });
+function hasEntries() {
+  if (data.view === 'entries') {
+    $noEntries.className = 'hidden';
+  }
+}
