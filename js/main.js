@@ -47,6 +47,10 @@ function renderEntries(entry) {
   textTitle.textContent = entry.title;
   columnDiv2.appendChild(textTitle);
 
+  var editIcon = document.createElement('i');
+  editIcon.className = 'fa-solid fa-pencil';
+  columnDiv2.appendChild(editIcon);
+
   var textNotes = document.createElement('p');
   textNotes.textContent = entry.notes;
   columnDiv2.appendChild(textNotes);
