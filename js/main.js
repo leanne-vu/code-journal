@@ -1,7 +1,6 @@
 /* global data */
 var $photoUrlInput = document.querySelector('#photo-url');
 var $image = document.querySelector('img');
-var $save = document.querySelector('.save');
 var $form = document.querySelector('form');
 $photoUrlInput.addEventListener('input', function () {
   $image.setAttribute('src', event.target.value);
@@ -22,7 +21,7 @@ $form.addEventListener('submit', function () {
   $form.reset();
   $noEntries.className = 'hidden no-entries-column column-full';
   $ul.prepend(renderEntries(entry));
-  $save.addEventListener('submit', swapViews);
+  swapViews('entries');
 }
 );
 
