@@ -95,13 +95,21 @@ function hasEntries() {
     $noEntries.className = 'hidden';
   }
 }
-$ul.addEventListener('click', entriesListClicked);
+$ul.addEventListener('click', editClicked);
 var $h1text = document.querySelector('.h1');
-function entriesListClicked() {
+function editClicked() {
   if (event.target.className === 'fa-solid fa-pencil') {
     swapViews('entry-form');
   }
   if ($h1text.textContent === 'New Entry') {
     $h1text.textContent = 'Edit Entry';
+  }
+  var listItem = event.target.closest('li');
+  var entryStringNum = listItem.getAttribute('data-entry-id');
+  var entryNumber = Math.floor(entryStringNum);
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].EntryID === entryNumber) {
+      data.editing = data.entries[i];
+    }
   }
 }
