@@ -27,6 +27,7 @@ $form.addEventListener('submit', function () {
 
 function renderEntries(entry) {
   var list = document.createElement('li');
+  list.setAttribute('data-entry-id', entry.EntryID);
   var rowDiv = document.createElement('div');
   rowDiv.className = 'entry-row row';
   list.appendChild(rowDiv);
