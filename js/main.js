@@ -110,6 +110,12 @@ function editClicked() {
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i].EntryID === entryNumber) {
       data.editing = data.entries[i];
+      $form.elements.title.value = data.entries[i].title;
+      $form.elements.url.value = data.entries[i].url;
+      $form.elements.notes.value = data.entries[i].notes;
+      $image.setAttribute('src', data.entries[i].url);
+
     }
   }
+
 }
