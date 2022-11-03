@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
   hasEntries();
 });
 function hasEntries() {
-  if (data.view === 'entries') {
+  if (data.entries.length > 0) {
     $noEntries.className = 'hidden';
   }
 }
