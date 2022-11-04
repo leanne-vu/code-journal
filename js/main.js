@@ -26,6 +26,12 @@ $form.addEventListener('submit', function () {
           EntryID: data.entries[i].EntryID
         };
         data.entries[i] = data.editing;
+        var $list = document.querySelectorAll('li');
+        for (var z = 0; z < $list.length; z++) {
+          if (Math.floor($list[z].getAttribute('data-entry-id')) === data.entries[i].EntryID) {
+            $list[z].replaceWith(renderEntries(data.entries[i]));
+          }
+        }
       }
     }
   }
@@ -33,17 +39,12 @@ $form.addEventListener('submit', function () {
     data.nextEntryId++;
     data.entries.unshift(entry);
     $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $ul.prepend(renderEntries(entry));
   }
   $form.reset();
-  $ul.prepend(renderEntries(entry));
   swapViews('entries');
   hasEntries();
   data.editing = null;
-  /*  var $list = document.querySelectorAll('li')
-
-   for (var z = 0; z < $list.length; z++) {
-        if ($list[z].getAttribute('data-entry-id') * 1 === data.editing.EntryID) {
-          $list[z].replaceWith(renderEntries(data.editing)); */
 
 }
 
