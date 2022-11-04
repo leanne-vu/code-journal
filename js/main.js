@@ -15,14 +15,38 @@ $form.addEventListener('submit', function () {
     notes: $form.elements.notes.value,
     EntryID: data.nextEntryId
   };
-  data.nextEntryId++;
-  data.entries.unshift(entry);
-  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  if (data.editing !== null) {
+
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.editing.EntryID === data.entries[i].EntryID) {
+        data.editing = {
+          title: $form.elements.title.value,
+          url: $form.elements.url.value,
+          notes: $form.elements.notes.value,
+          EntryID: data.entries[i].EntryID
+        };
+        data.entries[i] = data.editing;
+      }
+    }
+  }
+  if (data.editing === null) {
+    data.nextEntryId++;
+    data.entries.unshift(entry);
+    $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  }
   $form.reset();
   $ul.prepend(renderEntries(entry));
   swapViews('entries');
   hasEntries();
+  data.editing = null;
+  /*  var $list = document.querySelectorAll('li')
+
+   for (var z = 0; z < $list.length; z++) {
+        if ($list[z].getAttribute('data-entry-id') * 1 === data.editing.EntryID) {
+          $list[z].replaceWith(renderEntries(data.editing)); */
+
 }
+
 );
 
 function renderEntries(entry) {
@@ -72,9 +96,14 @@ var $noEntries = document.querySelector('.no-entries-column');
 var $entries = document.querySelector('.entries-anchor');
 var $dataviews = document.querySelectorAll('.view');
 var $newEntries = document.querySelector('.new-anchor');
-$entries.addEventListener('click', function () { swapViews($entries.getAttribute('data-view')); });
+$entries.addEventListener('click', function () {
+  data.editing = null;
+  swapViews($entries.getAttribute('data-view'));
+});
 $newEntries.addEventListener('click', function () {
   $h1text.textContent = 'New Entry';
+  $image.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.reset();
   swapViews($newEntries.getAttribute('data-view'));
 });
 function swapViews(dataview) {
@@ -114,7 +143,6 @@ function editClicked() {
       $form.elements.url.value = data.entries[i].url;
       $form.elements.notes.value = data.entries[i].notes;
       $image.setAttribute('src', data.entries[i].url);
-
     }
   }
 
