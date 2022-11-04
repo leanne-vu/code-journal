@@ -150,4 +150,14 @@ function editClicked() {
     }
   }
   $delete.className = 'delete-button';
+  $delete.addEventListener('click', function () {
+    var $modal = document.querySelector('.container-modal');
+    $modal.className = 'container-modal';
+
+  });
+  var $cancel = document.querySelector('.cancel-but');
+  $cancel.addEventListener('click', function () {
+    var $modal = document.querySelector('.container-modal');
+    $modal.className = 'hidden container-modal';
+  });
 }
