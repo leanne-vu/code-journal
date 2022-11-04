@@ -1,4 +1,5 @@
 /* global data */
+var $delete = document.querySelector('.delete-button');
 var $photoUrlInput = document.querySelector('#photo-url');
 var $image = document.querySelector('img');
 var $form = document.querySelector('form');
@@ -45,6 +46,7 @@ $form.addEventListener('submit', function () {
   swapViews('entries');
   hasEntries();
   data.editing = null;
+  $delete.className = 'hidden delete-button';
 
 }
 
@@ -99,6 +101,7 @@ var $dataviews = document.querySelectorAll('.view');
 var $newEntries = document.querySelector('.new-anchor');
 $entries.addEventListener('click', function () {
   data.editing = null;
+  $delete.className = 'hidden delete-button';
   swapViews($entries.getAttribute('data-view'));
 });
 $newEntries.addEventListener('click', function () {
@@ -146,5 +149,5 @@ function editClicked() {
       $image.setAttribute('src', data.entries[i].url);
     }
   }
-
+  $delete.className = 'delete-button';
 }
