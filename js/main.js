@@ -175,7 +175,13 @@ $confirm.addEventListener('click', function () {
       } data.entries.splice(i, 1);
     }
   }
-
+  var $modal = document.querySelector('.container-modal');
+  $modal.className = 'hidden container-modal';
+  if (data.entries.length === 0) {
+    $noEntries.className = 'no-entries-column column-full';
+  }
+  swapViews('entries');
+  data.editing = null;
 }
 
 );
