@@ -3,6 +3,7 @@ var $delete = document.querySelector('.delete-button');
 var $photoUrlInput = document.querySelector('#photo-url');
 var $image = document.querySelector('img');
 var $form = document.querySelector('form');
+
 $photoUrlInput.addEventListener('input', function () {
   $image.setAttribute('src', event.target.value);
 }
@@ -17,7 +18,6 @@ $form.addEventListener('submit', function () {
     EntryID: data.nextEntryId
   };
   if (data.editing !== null) {
-
     for (var i = 0; i < data.entries.length; i++) {
       if (data.editing.EntryID === data.entries[i].EntryID) {
         data.editing = {
@@ -47,9 +47,7 @@ $form.addEventListener('submit', function () {
   hasEntries();
   data.editing = null;
   $delete.className = 'hidden delete-button';
-
 }
-
 );
 
 function renderEntries(entry) {
@@ -93,9 +91,9 @@ function entryLoop(data) {
 
   }
 }
+
 document.addEventListener('DOMContentLoaded', entryLoop(data));
 var $noEntries = document.querySelector('.no-entries-column');
-
 var $entries = document.querySelector('.entries-anchor');
 var $dataviews = document.querySelectorAll('.view');
 var $newEntries = document.querySelector('.new-anchor');
@@ -110,6 +108,7 @@ $newEntries.addEventListener('click', function () {
   $form.reset();
   swapViews($newEntries.getAttribute('data-view'));
 });
+
 function swapViews(dataview) {
   data.view = dataview;
   for (var i = 0; i < $dataviews.length; i++) {
@@ -153,9 +152,7 @@ function editClicked() {
   $delete.addEventListener('click', function () {
     var $modal = document.querySelector('.container-modal');
     $modal.className = 'container-modal';
-
   });
-
 }
 var $cancel = document.querySelector('.cancel-but');
 $cancel.addEventListener('click', function () {
@@ -164,7 +161,6 @@ $cancel.addEventListener('click', function () {
 });
 var $confirm = document.querySelector('.confirm-but');
 $confirm.addEventListener('click', function () {
-
   for (var i = 0; i < data.entries.length; i++) {
     if (data.editing.EntryID === data.entries[i].EntryID) {
       var $list = document.querySelectorAll('li');
@@ -183,5 +179,4 @@ $confirm.addEventListener('click', function () {
   swapViews('entries');
   data.editing = null;
 }
-
 );
