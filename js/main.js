@@ -155,9 +155,27 @@ function editClicked() {
     $modal.className = 'container-modal';
 
   });
-  var $cancel = document.querySelector('.cancel-but');
-  $cancel.addEventListener('click', function () {
-    var $modal = document.querySelector('.container-modal');
-    $modal.className = 'hidden container-modal';
-  });
+
 }
+var $cancel = document.querySelector('.cancel-but');
+$cancel.addEventListener('click', function () {
+  var $modal = document.querySelector('.container-modal');
+  $modal.className = 'hidden container-modal';
+});
+var $confirm = document.querySelector('.confirm-but');
+$confirm.addEventListener('click', function () {
+
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.editing.EntryID === data.entries[i].EntryID) {
+      var $list = document.querySelectorAll('li');
+      for (var z = 0; z < $list.length; z++) {
+        if (Math.floor($list[z].getAttribute('data-entry-id')) === data.editing.EntryID) {
+          $list[z].remove();
+        }
+      } data.entries.splice(i, 1);
+    }
+  }
+
+}
+
+);
